@@ -1,0 +1,2 @@
+# TechExerciseCubic
+Technical exercise cubic
