@@ -6,6 +6,11 @@ using System.Threading.Tasks;
 
 namespace ShapesLib
 {
+    /**
+     * Keeps the coordinates of a 3D shape.
+     * Remember: the coordinate defines the location at the center of the object
+     * 
+     * */
     public class Coordinate3D: ICoordinate
     {
         private int x, y, z;

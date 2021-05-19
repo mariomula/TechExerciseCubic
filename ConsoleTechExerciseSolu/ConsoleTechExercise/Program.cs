@@ -15,32 +15,27 @@ namespace ConsoleTechExercise
             _ = new Program();
         }
 
+
+        /**
+         * */
         public Program()
         {
 
             try
             {
-                //
+                //User's input for the first cube
                 ICoordinate coordiCubeA = UserInputCoordinate("cubeA");
                 IDimension dimCubeA = UserInputDim("cubeA");
                 IShape mycube1 = new Cube(coordiCubeA, dimCubeA);
 
+                //User's input for the second cube
                 ICoordinate coordiCubeB = UserInputCoordinate("cubeB");
                 IDimension dimCubeB = UserInputDim("cubeB");
                 IShape mycube2 = new Cube(coordiCubeB, dimCubeB);
 
-                //
-                /*ICoordinate coordiCube1 = new Coordinate3D(10, 10, 10);
-                IDimension dimenCube1 = new DimensionCube(2);
-                IShape mycube1 = new Cube(coordiCube1, dimenCube1);
-
-                ICoordinate coordiCube2 = new Coordinate3D(11, 11, 12);
-                IDimension dimenCube2 = new DimensionCube(2);
-                IShape mycube2 = new Cube(coordiCube2, dimenCube2);
-                */
-
+                //Ojbect to find out whether there is collision or not
                 ICollisionChecker colliChecker = new CollisionCheckerCube();
-                if (colliChecker.IsCollision(mycube1, mycube2) == true)
+                if ( colliChecker.IsCollision(mycube1, mycube2) )
                 {
                     Console.WriteLine("There is collision between both objects.");
                 }
@@ -49,6 +44,7 @@ namespace ConsoleTechExercise
                     Console.WriteLine("There is no collision between both objects.");
                 }
 
+                //Object to calculate the intersected volumen
                 IVolumeCalculator voluCalculator = new VolumeCalcuCube();
                 var vol = voluCalculator.IntersecVolume(mycube1, mycube2);
                 Console.WriteLine($"The intersected volume is {vol}");
