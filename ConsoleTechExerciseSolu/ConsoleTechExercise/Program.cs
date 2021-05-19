@@ -17,6 +17,7 @@ namespace ConsoleTechExercise
 
         public Program()
         {
+
             try
             {
                 //
@@ -33,17 +34,25 @@ namespace ConsoleTechExercise
                 IDimension dimenCube1 = new DimensionCube(2);
                 IShape mycube1 = new Cube(coordiCube1, dimenCube1);
 
-                ICoordinate coordiCube2 = new Coordinate3D(11, 11, 11);
+                ICoordinate coordiCube2 = new Coordinate3D(11, 11, 12);
                 IDimension dimenCube2 = new DimensionCube(2);
                 IShape mycube2 = new Cube(coordiCube2, dimenCube2);
                 */
 
                 ICollisionChecker colliChecker = new CollisionCheckerCube();
-                bool res = colliChecker.IsCollision(mycube1, mycube2);
+                if (colliChecker.IsCollision(mycube1, mycube2) == true)
+                {
+                    Console.WriteLine("There is collision between both objects.");
+                }
+                else
+                {
+                    Console.WriteLine("There is no collision between both objects.");
+                }
 
+                IVolumeCalculator voluCalculator = new VolumeCalcuCube();
+                var vol = voluCalculator.IntersecVolume(mycube1, mycube2);
+                Console.WriteLine($"The intersected volume is {vol}");
 
-                if (res) Console.WriteLine("is collision");
-                else Console.WriteLine("there is no collision");
             }
             catch(Exception ex)
             {
@@ -58,7 +67,7 @@ namespace ConsoleTechExercise
          ICoordinate UserInputCoordinate(string customText)
         {
             
-            Console.WriteLine($"Enter coodinates {customText} (x,y,z):");
+            Console.WriteLine($"Enter coodinates {customText}. ie x,y,z:");
             string input = Console.ReadLine();
             string[] txt = input.Split(',');
             if (txt.Length != 3) throw new Exception("Invalid coordintate");
@@ -83,5 +92,8 @@ namespace ConsoleTechExercise
             IDimension dim1 = new DimensionCube(Convert.ToInt32(input));
             return dim1;
         }
+
+
+      
     }
 }
